@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stroke Landmark Trials Evidence Library</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="topbar">
+      <a class="brand" href="#home">Stroke Trials Library</a>
+      <div class="navlinks">
+        <a href="#core">Core trials</a>
+        <a href="#input">Scan text</a>
+        <a href="#library">Library</a>
+        <a href="#references">References</a>
+      </div>
+    </nav>
+    <section id="home" class="hero-grid">
+      <div>
+        <p class="eyebrow">AHA/ASA + Continuum-based resident study tool</p>
+        <h1>Stroke Landmark Trials Evidence Library</h1>
+        <p class="subtitle">A mobile-friendly static app for organizing thrombolysis, TNK/tPA, thrombectomy, carotid, TIA/DAPT, ESUS, PFO, ICH, SAH, lipid, BP, and systems-of-care trials.</p>
+        <div class="hero-actions">
+          <a href="#library" class="btn primary">Open full library</a>
+          <a href="#core" class="btn ghost">Jump to core trials</a>
+        </div>
+      </div>
+      <aside class="safety-card">
+        <h2>Accuracy rule</h2>
+        <p>This is an educational organizer, not a clinical decision tool. Any exact year, sample size, effect estimate, or citation must be verified against the original publication and guideline before academic or patient-care use.</p>
+      </aside>
+    </section>
+  </header>
+
+  <main>
+    <section id="core" class="panel">
+      <div class="section-title">
+        <p class="eyebrow">Visible first: no hidden filters</p>
+        <h2>Core stroke trial map</h2>
+        <p>Click any button to jump to that group. Each trial title links to a PubMed search so the resident can read the source paper.</p>
+      </div>
+      <div id="categoryMap" class="category-map"></div>
+    </section>
+
+    <section id="input" class="panel two-col">
+      <div>
+        <p class="eyebrow">Upload / input</p>
+        <h2>Scan guideline or review text</h2>
+        <p class="muted">Paste copied text from an AHA/ASA guideline, Continuum chapter, or article. GitHub Pages is static, so this version reads pasted text and .txt files only. PDF parsing needs a backend or pre-converted text.</p>
+        <textarea id="sourceText" placeholder="Paste guideline/review text here. Example: MR CLEAN, DAWN, NASCET, CHANCE, NAVIGATE ESUS..."></textarea>
+        <div class="button-row">
+          <label class="btn file-btn">Upload .txt <input id="txtUpload" type="file" accept=".txt,text/plain" /></label>
+          <button id="scanBtn" class="btn primary" type="button">Scan text</button>
+          <button id="clearBtn" class="btn" type="button">Clear</button>
+        </div>
+      </div>
+      <div class="scan-box">
+        <h3>Scan result</h3>
+        <div id="scanSummary" class="scan-summary">No text scanned yet. Paste text and click <strong>Scan text</strong>.</div>
+        <div id="detectedTrials" class="pill-list"></div>
+        <div id="missingTrials" class="missing-list"></div>
+      </div>
+    </section>
+
+    <section class="sticky-tools" aria-label="Search and filter controls">
+      <input id="searchInput" type="search" placeholder="Search trial: TNK, tPA, MR CLEAN, NASCET, CHANCE, ESUS..." />
+      <select id="categoryFilter"><option value="all">All categories</option></select>
+      <select id="conditionFilter"><option value="all">All conditions</option></select>
+      <select id="interventionFilter"><option value="all">All interventions</option></select>
+      <button id="showAllBtn" class="btn" type="button">Show all</button>
+      <button id="exportCsvBtn" class="btn" type="button">CSV</button>
+      <button id="copyTableBtn" class="btn" type="button">Copy</button>
+      <button id="printBtn" class="btn" type="button">Print</button>
+    </section>
+
+    <section id="library" class="panel">
+      <div class="section-title">
+        <p class="eyebrow">Full trial library</p>
+        <h2>All organized evidence cards</h2>
+        <p id="resultCount" class="muted"></p>
+      </div>
+      <div id="activeFilters" class="active-filters"></div>
+      <div id="libraryContainer" class="library-container"></div>
+    </section>
+
+    <section id="references" class="panel">
+      <p class="eyebrow">References</p>
+      <h2>How references work in this static app</h2>
+      <p>Each trial card contains links to PubMed and Google Scholar searches for the trial name plus stroke. This avoids inventing exact citations. Cards with incomplete citation metadata are labeled “citation to verify.”</p>
+      <div id="referenceList" class="reference-list"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Educational tool only. Verify original trial publications and current AHA/ASA guidelines before clinical or academic use.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
