@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stroke Landmark Trials Evidence Library</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <a class="brand" href="#top">Stroke Evidence Library</a>
+      <div class="navlinks">
+        <a href="#core">Core Trials</a>
+        <a href="#input">Extract</a>
+        <a href="#library">Library</a>
+        <a href="#references">References</a>
+      </div>
+    </nav>
+
+    <section id="top" class="heroContent">
+      <p class="eyebrow">AHA/ASA • Continuum • Landmark stroke trials</p>
+      <h1>Stroke Landmark Trials Evidence Library</h1>
+      <p class="subtitle">A mobile-friendly trial library for TNK/tPA, thrombectomy, carotid, TIA/DAPT, ESUS, ICH, SAH, PFO, BP, lipid, and stroke systems trials.</p>
+      <div class="heroActions">
+        <a class="btn primary" href="#core">See the major trials</a>
+        <a class="btn ghost" href="#input">Paste guideline text</a>
+      </div>
+      <div class="quickStats" id="quickStats"></div>
+    </section>
+  </header>
+
+  <main>
+    <section class="alert">
+      <strong>Educational tool only.</strong> Verify exact sample sizes, primary outcomes, effect estimates, and citations against the original guideline and trial publication before academic or clinical use.
+    </section>
+
+    <section id="core" class="panel standout">
+      <div class="sectionHeader">
+        <p class="eyebrow">Do not miss these</p>
+        <h2>Core trial groups visible immediately</h2>
+        <p>This page now shows the trial lists up front, before the long evidence cards.</p>
+      </div>
+      <div class="coreGrid" id="coreGrid"></div>
+    </section>
+
+    <section id="input" class="panel">
+      <div class="sectionHeader">
+        <p class="eyebrow">Upload / input</p>
+        <h2>Paste guideline or Continuum text and scan</h2>
+        <p>The static GitHub Pages version cannot reliably parse PDFs directly. Copy PDF text into the box or upload a .txt export.</p>
+      </div>
+      <div class="inputGrid">
+        <div>
+          <label for="sourceText">Guideline / review text</label>
+          <textarea id="sourceText" placeholder="Paste AHA/ASA guideline text, Continuum review text, references, or extracted PDF text here..."></textarea>
+        </div>
+        <aside class="uploadBox">
+          <h3>Scan options</h3>
+          <input id="txtUpload" type="file" accept=".txt,text/plain" />
+          <button id="scanBtn" class="btn primary full">Scan for trials</button>
+          <button id="clearBtn" class="btn secondary full">Clear scan</button>
+          <p class="small">Detected trials are marked <b>found in uploaded text</b>. Built-in important trials not found are marked <b>important trial not detected</b>.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="detected" class="panel">
+      <div class="sectionHeader">
+        <p class="eyebrow">Extraction results</p>
+        <h2>Detected vs missing important trials</h2>
+      </div>
+      <div class="stats">
+        <div><strong id="foundCount">0</strong><span>Found in text</span></div>
+        <div><strong id="missingCount">0</strong><span>Important not detected</span></div>
+        <div><strong id="totalCount">0</strong><span>Total built-in trials</span></div>
+      </div>
+      <div id="detectedList" class="detectedList"></div>
+    </section>
+
+    <section class="toolbar" aria-label="Search and filter">
+      <input id="searchBox" type="search" placeholder="Search: TNK, tPA, MR CLEAN, NASCET, CHANCE, ESUS..." />
+      <select id="categoryFilter"><option value="">All categories</option></select>
+      <select id="conditionFilter"><option value="">All conditions</option></select>
+      <select id="interventionFilter"><option value="">All interventions</option></select>
+      <select id="topicFilter"><option value="">All guideline topics</option></select>
+      <button id="exportCsv" class="btn secondary">CSV</button>
+      <button id="copyTable" class="btn secondary">Copy</button>
+      <button id="printView" class="btn secondary">Print</button>
+    </section>
+
+    <section id="library" class="panel">
+      <div class="sectionHeader">
+        <p class="eyebrow">Full trial library</p>
+        <h2>All organized evidence cards</h2>
+        <p>Tap any trial card to open the full structured evidence summary.</p>
+      </div>
+      <div id="trialContainer"></div>
+    </section>
+
+    <section id="references" class="panel">
+      <div class="sectionHeader">
+        <p class="eyebrow">References</p>
+        <h2>Major trial references</h2>
+      </div>
+      <div id="referenceList" class="referenceList"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Stroke Landmark Trials Evidence Library. Static GitHub Pages version. No backend. No patient-specific clinical decision support.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
